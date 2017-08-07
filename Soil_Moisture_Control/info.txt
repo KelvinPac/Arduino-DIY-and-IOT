@@ -1,0 +1,9 @@
+for kelvin eee project
+-Irrigation system
+
+consists
+............
+lcd 19*2
+mositure sensor
+arduino compatible board (self made)
+relay

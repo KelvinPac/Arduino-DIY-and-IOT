@@ -1,0 +1,8 @@
+for diy rc car (personal);
+
+2 motors
+chasis
+free app-playstore 
+Af motor shield
+Arduino
+Utrasonic sensor
