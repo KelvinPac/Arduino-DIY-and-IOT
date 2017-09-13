@@ -1,5 +1,5 @@
-// connect motor controller pins to Arduino digital pins
 
+// connect motor controller pins to Arduino digital pins
 // note that maximum speed is determined by the motor itself and the operating voltage
  // the PWM values sent by analogWrite() are fractions of the maximum speed possible by your hardware
 
@@ -13,16 +13,18 @@ int in2 = 10;
 int enB = 3;
 int in3 = 2;
 int in4 = 4;
-
+int motorPin = 13;
 
 char command; 
 int speed;
-int turn_speed =40;
+int turn_speed =60;
 
 void setup() {
     Serial.begin(9600);  //Set the baud rate to your Bluetooth module.
     pinMode(5, OUTPUT); //Front lights
     pinMode(3, OUTPUT);  //Back lights
+
+   // pinMode(motorPin, OUTPUT);
     // set all the motor control pins to outputs
     pinMode(enA, OUTPUT);
     pinMode(in1, OUTPUT);
@@ -33,6 +35,9 @@ void setup() {
     pinMode(in3, OUTPUT);
     pinMode(in4, OUTPUT);
 
+
+     // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
@@ -49,6 +54,22 @@ void loop() {
       case 'B':  
       back();
       break;
+      case 'G':  
+      startMotor();
+      break;
+      case 'I':  
+      stopMotor();
+      break;
+
+      case 'W':
+      left();
+      break;
+
+      case 'w':
+      left();
+      break;
+
+      
       case 'L':
       left();
       break;
@@ -157,4 +178,16 @@ void Stop()
      digitalWrite(in3, LOW);
      digitalWrite(in4, LOW);
 }
+
+void stopMotor()
+{
+  digitalWrite(LED_BUILTIN, LOW);
+  //digitalWrite(motorPin, LOW);
+  
+}
+ void startMotor()
+ {
+   digitalWrite(LED_BUILTIN, HIGH);
+//digitalWrite(motorPin, HIGH);
+ }
 
